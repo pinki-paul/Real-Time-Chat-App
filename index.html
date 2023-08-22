@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="/client.js"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        height: 100%;
+       background-color: rgba(187, 160, 211, 0.774);
+    }
+    nav{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .logo{
+        height: 4rem;
+    }
+    hr{
+        margin: 0;
+        padding: 0;
+        border-color: rgba(238, 238, 238, 0.342);
+    }
+    .container{
+        width: 60%;
+        height: 60vh;
+        margin: auto;
+        display: block;
+        border-radius: 10px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .heading{
+        background-color: rgba(161, 78, 170, 0.863);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        color: rgb(71, 0, 71);
+        align-items: center;
+        font-size: 26px;
+        font-weight: 600;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .margin{
+        margin:30px 0;
+    }
+    .message{
+        width: 230px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin: 10px 10px;
+        border-radius: 6px;
+        padding: 6px;
+      
+    }
+    .left{
+        float: left;
+        clear: both;
+        margin: 6px;
+        box-shadow: 1px 1px 7px rgb(147, 186, 202);
+    }
+    .right{
+        float: right;
+        clear: both;
+        margin: 6px;
+        box-shadow: 1px 1px 7px rgb(188, 216, 228);
+    }
+    .center{
+        display: block;
+        margin: auto;
+        clear: both;
+        background-color: rgba(154, 154, 207, 0.712);
+        color: rgb(62, 10, 110);
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 6px;
+    }
+    #messagebox{
+        height: 100%;
+        background-color: #fff;
+        overflow: auto;
+        padding-top: 10px;
+        border: 1px solid gray;
+        margin-bottom: 15px;
+    }
+   .container .messagesendbox,form{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    #send_msg{
+        width: 100%;
+        font-size: 18px;
+        color: rgb(41, 2, 33);
+        background-color: rgba(243, 243, 243, 0.911);
+        border: 1px solid rgb(92, 6, 95);
+        outline: none;
+        padding: 6px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        border-radius: 20px;
+    }
+    #send_msg::placeholder{
+        font-size: 16px;
+        color:grey;
+        text-transform: capitalize;
+        text-align: center;
+        letter-spacing: 2px;
+
+    }
+    #sendbtn{
+        width: 80px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: #fff;
+        background-color: rgba(94, 22, 94, 0.938);
+        font-size: 18px;
+        padding: 10px;
+        font-weight: 600;
+        border:none;
+        margin-left: 10px;
+        border-radius: 20px;
+    }
+
+    @media (max-width:730px) {
+        .container{
+            width: 95%;
+            height: 450px;
+        }
+    }
+
+</style>
+<body>
+    <nav>
+        <img src="chat.png" class="logo" alt="chat image">  
+    </nav>
+    <hr>
+    <div class="margin"></div>
+    <div class="container">
+        <div class="heading">My Chat App</div>
+        <div id="messagebox">
+           <!-- <div class="message center">Pinki joined the chat</div>
+           <div class="message right">Pinki: hii</div>
+           <div class="message left">Pritam:hello</div>
+           <div class="message center">Pinki left the chat</div> -->
+        </div>
+        <div class="messagesendbox">
+            <form action="#" id="sendcont">
+                <input type="text" name="send_msg" id="send_msg" placeholder="write something here">
+                <button id="sendbtn" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    <script>
+       const element = document.getElementById("messagebox");
+       element.scrollTop = element.scrollHeight;
+    </script>
+</body>
+</html>
